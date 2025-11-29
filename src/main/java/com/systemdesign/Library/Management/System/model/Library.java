@@ -9,7 +9,6 @@ public class Library {
         private String name;
         private Address address;
         private Catalog catalog;
-        private List<BookItem> items = new ArrayList<>();
         private List<Member> members = new ArrayList<>();
         private List<Librarian> librarians = new ArrayList<>();
         private List<Rack> racks = new ArrayList<>();
@@ -48,18 +47,7 @@ public class Library {
             catalog.addBook(b);
         }
 
-        public BookItem addBookItem(BookItem bi) {
-            items.add(bi);
-            return bi;
-        }
 
-        public List<BookItem> findBookItemsByBook(Book book) {
-            List<BookItem> res = new ArrayList<>();
-            for (BookItem bi : items) {
-                if (bi.getBook().equals(book)) res.add(bi);
-            }
-            return res;
-        }
 
         public Catalog getCatalog() { return catalog; }
         public Address getAddress() { return address; }

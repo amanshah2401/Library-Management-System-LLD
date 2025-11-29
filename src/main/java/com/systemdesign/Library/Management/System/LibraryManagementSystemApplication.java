@@ -38,7 +38,8 @@ public class LibraryManagementSystemApplication {
         // Add a rack and book items
         Rack rack1 = central.findOrCreateRack("Floor1-Aisle1-ShelfA");
         BookItem copy1 = lib.addBookItem(book, BookFormat.HARDCOVER, rack1);
-        central.addBookItem(copy1);
+        rack1.placeBookItem(copy1);
+        central.addRack(rack1);
 
         // Search
         System.out.println("\nSearch by title 'Data': ");
@@ -68,7 +69,8 @@ public class LibraryManagementSystemApplication {
 
         // Demonstrate notifications when an item becomes available and observers were registered
         BookItem copy2 = lib.addBookItem(book, BookFormat.PAPERBACK, central.findOrCreateRack("Floor1-Aisle1-ShelfA"));
-        central.addBookItem(copy2);
+        rack1.placeBookItem(copy2);
+        central.addRack(rack1);
         // make copy2 not available and register observer
         copy2.setStatus(BookStatus.LOANED);
         BookReservation r2 = aman.reserveBook(copy2); // registers observer and status WAITING
